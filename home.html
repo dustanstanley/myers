@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Myers Underground Utilities, LLC | Hattiesburg, MS</title>
+  <meta name="description" content="Mississippi underground utility contractor: water, sewer, fire protection, site work, and boring. Licensed, insured, and bonded. Serving public and private clients across MS and AL.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* Brand from README: blue rgb(37,35,85), red rgb(220,50,50); display font Garamond (EB Garamond) */
+    :root {
+      --brand-navy: rgb(37, 35, 85);
+      --brand-navy-soft: rgb(48, 46, 102);
+      --brand-red: rgb(220, 50, 50);
+      --brand-red-hover: rgb(190, 40, 40);
+      --ink: #1c1c1e;
+      --muted: #5c5c62;
+      --surface: #ffffff;
+      --surface-warm: #f7f6f3;
+      --surface-band: #eceae4;
+      --line: rgba(37, 35, 85, 0.12);
+      --font-display: "EB Garamond", "Times New Roman", serif;
+      --font-ui: "Source Sans 3", system-ui, -apple-system, sans-serif;
+      --max: 1180px;
+      --header-h: 72px;
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-ui);
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      color: var(--ink);
+      background: var(--surface-warm);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--brand-navy-soft); text-underline-offset: 3px; }
+    a:hover { color: var(--brand-red); }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      padding: 0 clamp(1rem, 4vw, 2rem);
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      transition: box-shadow 0.35s var(--ease-out), background 0.35s;
+    }
+    .site-header.is-scrolled {
+      box-shadow: 0 8px 32px rgba(37, 35, 85, 0.08);
+    }
+    .site-header.is-hero {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom-color: transparent;
+    }
+
+    .header-inner {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .logo-link img { height: clamp(40px, 8vw, 52px); width: auto; }
+
+    .nav-main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.35rem 1.5rem;
+    }
+    .nav-main a {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--brand-navy);
+    }
+    .nav-main a:hover { color: var(--brand-red); }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--brand-navy);
+      transition: transform 0.25s;
+    }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: var(--header-h);
+      left: 0;
+      right: 0;
+      padding: 1rem 1.5rem 1.5rem;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      flex-direction: column;
+      gap: 0.75rem;
+      z-index: 199;
+    }
+    .mobile-nav.is-open { display: flex; }
+    .mobile-nav a {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.8125rem;
+      text-decoration: none;
+      color: var(--brand-navy);
+      padding: 0.5rem 0;
+    }
+
+    @media (max-width: 820px) {
+      .nav-main { display: none; }
+      .nav-toggle { display: flex; }
+    }
+
+    .wrap {
+      width: min(var(--max), 100% - clamp(1.25rem, 5vw, 3rem));
+      margin-inline: auto;
+    }
+
+    /* Hero — conservative full-bleed construction feel */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      padding: calc(var(--header-h) + 2.5rem) 0 4rem;
+      color: #fff;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        165deg,
+        rgba(37, 35, 85, 0.88) 0%,
+        rgba(37, 35, 85, 0.55) 45%,
+        rgba(20, 20, 30, 0.75) 100%
+      );
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+    .hero-eyebrow {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.9;
+      margin: 0 0 0.75rem;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.35rem, 5.5vw, 3.75rem);
+      font-weight: 600;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin: 0 0 1.25rem;
+      max-width: 16ch;
+    }
+    .hero-lead {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      line-height: 1.55;
+      max-width: 38rem;
+      opacity: 0.92;
+      margin: 0 0 2rem;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.65rem;
+      font-family: var(--font-ui);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.25s, color 0.25s, transform 0.2s;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary {
+      background: var(--brand-red);
+      color: #fff;
+      border: 2px solid var(--brand-red);
+    }
+    .btn-primary:hover {
+      background: var(--brand-red-hover);
+      border-color: var(--brand-red-hover);
+      color: #fff;
+    }
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.65);
+    }
+    .btn-outline:hover {
+      background: #fff;
+      color: var(--brand-navy);
+      border-color: #fff;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .hero-stat strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .hero-stat span {
+      font-size: 0.8125rem;
+      opacity: 0.85;
+      letter-spacing: 0.04em;
+    }
+    @media (max-width: 640px) {
+      .hero-stats { grid-template-columns: 1fr; }
+    }
+
+    /* Sections */
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brand-red);
+      margin: 0 0 0.65rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.85rem, 4vw, 2.65rem);
+      font-weight: 600;
+      color: var(--brand-navy);
+      line-height: 1.15;
+      margin: 0 0 1rem;
+    }
+    .section-lead {
+      color: var(--muted);
+      max-width: 42rem;
+      margin: 0 0 2rem;
+    }
+
+    section {
+      padding: clamp(3.5rem, 8vw, 6rem) 0;
+    }
+    .band-light { background: var(--surface); }
+    .band-warm { background: var(--surface-warm); }
+    .band-navy {
+      background: var(--brand-navy);
+      color: rgba(255, 255, 255, 0.92);
+    }
+    .band-navy .section-label { color: rgba(255, 255, 255, 0.75); }
+    .band-navy .section-title { color: #fff; }
+    .band-navy .section-lead { color: rgba(255, 255, 255, 0.78); }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+
+    /* About grid */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+    .about-media {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(37, 35, 85, 0.15);
+    }
+    .about-media figcaption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem 1.25rem;
+      background: linear-gradient(transparent, rgba(37, 35, 85, 0.92));
+      color: #fff;
+      font-size: 0.875rem;
+    }
+    .about-media figcaption strong { display: block; font-size: 0.9375rem; }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: border-color 0.25s, box-shadow 0.35s var(--ease-out);
+    }
+    .service-card:hover {
+      border-color: rgba(220, 50, 50, 0.35);
+      box-shadow: 0 16px 40px rgba(37, 35, 85, 0.08);
+    }
+    .service-card .thumb {
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      width: 100%;
+    }
+    .service-card .body { padding: 1.25rem 1.35rem 1.5rem; }
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--brand-navy);
+      margin: 0 0 0.5rem;
+    }
+    .service-card p {
+      margin: 0;
+      font-size: 0.9375rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* Mission */
+    .mission-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 3vw, 1.85rem);
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1.45;
+      margin: 0;
+      max-width: 52rem;
+    }
+    .mission-quote cite {
+      display: block;
+      margin-top: 1.25rem;
+      font-family: var(--font-ui);
+      font-size: 0.875rem;
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+
+    /* Split */
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+    }
+    @media (max-width: 768px) {
+      .split-grid { grid-template-columns: 1fr; }
+    }
+    .split-panel h3 {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      color: var(--brand-navy);
+      margin: 0 0 0.75rem;
+    }
+    .split-panel p { margin: 0; color: var(--muted); }
+
+    /* Testimonials */
+    .quotes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 900px) {
+      .quotes { grid-template-columns: 1fr; }
+    }
+    .quote-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 1.75rem;
+      border-radius: 4px;
+      position: relative;
+    }
+    .quote-card::before {
+      content: "“";
+      font-family: var(--font-display);
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--brand-red);
+      opacity: 0.35;
+      position: absolute;
+      top: 0.75rem;
+      right: 1.25rem;
+    }
+    .quote-card p {
+      margin: 0 0 1.25rem;
+      font-size: 0.975rem;
+      color: var(--ink);
+      position: relative;
+      z-index: 1;
+    }
+    .quote-card footer {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--brand-navy);
+    }
+    .quote-card footer span {
+      display: block;
+      font-weight: 600;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    /* Projects mosaic */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: minmax(140px, auto);
+      gap: 0.75rem;
+    }
+    @media (max-width: 900px) {
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .project-tile {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      min-height: 160px;
+    }
+    .project-tile.large {
+      grid-column: span 2;
+      grid-row: span 2;
+      min-height: 280px;
+    }
+    .project-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease-out);
+    }
+    .project-tile:hover img { transform: scale(1.05); }
+    .project-tile .cap {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1rem;
+      background: linear-gradient(transparent 20%, rgba(37, 35, 85, 0.88));
+      color: #fff;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    /* Careers */
+    .careers-box {
+      background: var(--surface);
+      border-left: 4px solid var(--brand-red);
+      padding: 2rem clamp(1.5rem, 4vw, 2.5rem);
+      box-shadow: 0 12px 40px rgba(37, 35, 85, 0.06);
+    }
+    .careers-box h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--brand-navy);
+      margin: 0 0 0.75rem;
+    }
+    .careers-box p { margin: 0 0 1rem; color: var(--muted); }
+    .careers-box p:last-child { margin-bottom: 0; }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+    @media (max-width: 820px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    .contact-block {
+      background: var(--surface);
+      padding: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+    }
+    .contact-block strong {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--brand-red);
+      margin-bottom: 0.35rem;
+    }
+    .contact-block .row { margin-bottom: 1.35rem; }
+    .contact-block .row:last-of-type { margin-bottom: 0; }
+    .map-embed {
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      min-height: 320px;
+      background: var(--surface-band);
+    }
+    .map-embed iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      border: 0;
+    }
+
+    .site-footer {
+      padding: 2rem clamp(1.25rem, 4vw, 2rem);
+      background: var(--brand-navy);
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.875rem;
+      text-align: center;
+    }
+    .site-footer p { margin: 0; }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header is-hero" id="header">
+    <div class="header-inner">
+      <a class="logo-link" href="#top" aria-label="Myers Underground Utilities home">
+        <img src="logo/Myers Underground Logo color matched.svg" width="220" height="136" alt="Myers Underground Utilities">
+      </a>
+      <nav class="nav-main" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#careers">Careers</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#careers">Careers</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-bg" aria-hidden="true">
+        <img
+          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80"
+          width="1920"
+          height="1080"
+          alt=""
+          fetchpriority="high"
+        >
+      </div>
+      <div class="hero-inner wrap">
+        <p class="hero-eyebrow">Underground utilities contractor</p>
+        <h1 id="hero-heading">Infrastructure built on safety, quality, and service.</h1>
+        <p class="hero-lead">Water, sewer, and gas lines — commercial, industrial, and subdivisions — plus sitework, road bores, and concrete. Licensed, insured, and bonded; serving Mississippi and Alabama from Hattiesburg.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:+16015444188">Call (601) 544-4188</a>
+          <a class="btn btn-outline" href="#contact">Get directions</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <strong>MS + AL</strong>
+            <span>Public &amp; private sector projects</span>
+          </div>
+          <div class="hero-stat">
+            <strong>3rd gen</strong>
+            <span>Family-led contracting</span>
+          </div>
+          <div class="hero-stat">
+            <strong>Safety first</strong>
+            <span>Industry-modeled program</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-light" id="about" aria-labelledby="about-title">
+      <div class="wrap about-grid">
+        <figure class="about-media reveal">
+          <img
+            src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=900&q=80"
+            width="900"
+            height="600"
+            alt="Placeholder: construction team and site coordination"
+          >
+          <figcaption>
+            <strong>Leadership</strong>
+            When you have photography of Bill Myers and Peyton Myers, replace this placeholder (see project README).
+          </figcaption>
+        </figure>
+        <div class="reveal reveal-delay-1">
+          <p class="section-label">About us</p>
+          <h2 class="section-title" id="about-title">Experience you can trust.</h2>
+          <p class="section-lead" style="margin-top:0">Myers Underground Utilities, LLC is a Mississippi-based contractor serving the public and private sectors. We are licensed, insured, and bonded in Mississippi with completed work in Mississippi and Alabama.</p>
+          <p style="color:var(--muted);margin:0 0 1rem">We deliver infrastructure for roads, malls, subdivisions, and public works — water and sanitary sewer systems, sewage lagoons, water treatment plants, storm drainage, and pumping stations.</p>
+          <p style="color:var(--muted);margin:0"><strong style="color:var(--ink)">Peyton Myers</strong>, owner and third-generation contractor, built the company on safety, quality, and service. Our employees are our most important resource; our safety program follows industry best practices. While every project differs, our goal is the same: high-quality, result-oriented service — the standard our clients expect.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-warm reveal" id="services" aria-labelledby="services-title">
+      <div class="wrap">
+        <p class="section-label">Capabilities</p>
+        <h2 class="section-title" id="services-title">Services</h2>
+        <p class="section-lead">Structured capabilities across underground utilities — aligned with how we mobilize in the field.</p>
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <img class="thumb" src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&q=80" width="600" height="375" alt="Placeholder: water utility work">
+            <div class="body">
+              <h3>Water</h3>
+              <p>Distribution, storage, treatment, extensions, and relocations.</p>
+            </div>
+          </article>
+          <article class="service-card reveal reveal-delay-1">
+            <img class="thumb" src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80" width="600" height="375" alt="Placeholder: sanitary sewer construction">
+            <div class="body">
+              <h3>Sanitary sewer</h3>
+              <p>Collection systems, replacement, repair, and force mains.</p>
+            </div>
+          </article>
+          <article class="service-card reveal reveal-delay-2">
+            <img class="thumb" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80" width="600" height="375" alt="Placeholder: site and civil work">
+            <div class="body">
+              <h3>Site work &amp; roads</h3>
+              <p>Clearing, grubbing, road building, and storm drainage structures.</p>
+            </div>
+          </article>
+          <article class="service-card reveal">
+            <img class="thumb" src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80" width="600" height="375" alt="Placeholder: pumping infrastructure">
+            <div class="body">
+              <h3>Pumping &amp; treatment</h3>
+              <p>Pump stations, rehabilitation, water and wastewater plants.</p>
+            </div>
+          </article>
+          <article class="service-card reveal reveal-delay-1">
+            <img class="thumb" src="https://images.unsplash.com/photo-1565008576549-57569a49371d?w=600&q=80" width="600" height="375" alt="Placeholder: boring and tunneling">
+            <div class="body">
+              <h3>Boring &amp; tunneling</h3>
+              <p>Road bores and tunneling when open cut is not practical.</p>
+            </div>
+          </article>
+          <article class="service-card reveal reveal-delay-2">
+            <img class="thumb" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" width="600" height="375" alt="Placeholder: fire protection systems">
+            <div class="body">
+              <h3>Fire protection</h3>
+              <p>Fire protection water systems for facilities and developments.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-navy reveal" aria-labelledby="mission-title">
+      <div class="wrap">
+        <p class="section-label">Mission</p>
+        <h2 class="section-title" id="mission-title">Building communities below grade.</h2>
+        <blockquote class="mission-quote">
+          Our mission is to pursue the business of constructing underground utilities to enhance the safety and general well-being of the owners and surrounding communities.
+          <cite>— Peyton Myers</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="band-light reveal" aria-labelledby="split-title">
+      <div class="wrap">
+        <p class="section-label">Why Myers</p>
+        <h2 class="section-title" id="split-title">Professional. Prepared. Proven.</h2>
+        <div class="split-grid" style="margin-top:2rem">
+          <div class="split-panel reveal">
+            <p class="section-label" style="margin-bottom:0.5rem">Experienced</p>
+            <h3>Depth across sectors</h3>
+            <p>We have built infrastructure for hundreds of municipalities, private developers, and general contractors. Our public-sector experience means practical knowledge of local, state, and federal regulations and programs.</p>
+          </div>
+          <div class="split-panel reveal reveal-delay-1">
+            <p class="section-label" style="margin-bottom:0.5rem">Ready</p>
+            <h3>Mobilized for your schedule</h3>
+            <p>We evaluate each project, identify the right resources, and mobilize for high-quality performance — from water and sewer to site utilities and concrete.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-warm reveal" aria-labelledby="testimonials-title">
+      <div class="wrap">
+        <p class="section-label">References</p>
+        <h2 class="section-title" id="testimonials-title">What partners say</h2>
+        <div class="quotes" style="margin-top:2rem">
+          <figure class="quote-card reveal">
+            <p>I appreciate the fine work you and your crew performed while relocating a 10″ HDPE force main from an existing bridge scheduled for replacement. Downtime on the existing force main was minimized — it went very smoothly.</p>
+            <footer>Edward L. (Ned) Hogg, P.E.<span>Seymour Engineering</span></footer>
+          </figure>
+          <figure class="quote-card reveal reveal-delay-1">
+            <p>We have worked with Myers Underground Utilities over several years on many types of work. They performed in the most professional manner possible. We would recommend them for any work in their field of experience.</p>
+            <footer>Kyle D. Wallace, P.E.<span>VP, Shows, Dearmon &amp; Waits, Inc.</span></footer>
+          </figure>
+          <figure class="quote-card reveal reveal-delay-2">
+            <p>Our relationship with Myers Underground has been entirely satisfactory. Quality work, on schedule. We are proud to have them as a subcontractor and look forward to many more years.</p>
+            <footer>Arthur Henderson<span>Hub Mechanical Contractors, Inc.</span></footer>
+          </figure>
+        </div>
+        <blockquote class="reveal" style="margin:2.5rem 0 0;padding:1.5rem 0 0;border-top:1px solid var(--line);font-family:var(--font-display);font-size:1.25rem;font-style:italic;color:var(--brand-navy)">
+          Our primary objective is always the same: deliver high quality professional services that are result oriented.
+          <cite style="display:block;margin-top:0.75rem;font-family:var(--font-ui);font-size:0.8125rem;font-style:normal;font-weight:700;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase">— Peyton Myers</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="band-light reveal" id="projects" aria-labelledby="projects-title">
+      <div class="wrap">
+        <p class="section-label">Portfolio</p>
+        <h2 class="section-title" id="projects-title">Selected projects</h2>
+        <p class="section-lead">Representative work — education, healthcare, retail, municipalities, and residential development. Imagery below is placeholder stock; swap for job photos when available.</p>
+        <div class="projects-grid" style="margin-top:2rem">
+          <a href="#contact" class="project-tile large reveal" style="text-decoration:none;color:inherit">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" width="800" height="600" alt="Placeholder: commercial development">
+            <span class="cap">Commercial development — Lamar Park Water and Sewer Association</span>
+          </a>
+          <a href="#contact" class="project-tile reveal reveal-delay-1" style="text-decoration:none;color:inherit">
+            <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=500&q=80" width="500" height="300" alt="Placeholder: institutional building">
+            <span class="cap">Forrest County Agricultural High School additions &amp; renovations</span>
+          </a>
+          <a href="#contact" class="project-tile reveal reveal-delay-2" style="text-decoration:none;color:inherit">
+            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&q=80" width="500" height="300" alt="Placeholder: healthcare facility">
+            <span class="cap">South Psychiatric Hospital — Dept. of Mental Health</span>
+          </a>
+          <a href="#contact" class="project-tile reveal" style="text-decoration:none;color:inherit">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500&q=80" width="500" height="300" alt="Placeholder: industrial utilities">
+            <span class="cap">Pump station &amp; force main — City of Laurel</span>
+          </a>
+          <a href="#contact" class="project-tile reveal reveal-delay-1" style="text-decoration:none;color:inherit">
+            <img src="https://images.unsplash.com/photo-1449157291145-7efd050fec4f?w=500&q=80" width="500" height="300" alt="Placeholder: subdivision infrastructure">
+            <span class="cap">Woods Subdivision Phase I — Lamar County</span>
+          </a>
+        </div>
+        <p style="margin:2rem 0 0;font-size:0.9375rem;color:var(--muted)">Additional projects include Walmart Supercenter Wiggins, JCJC parking and utilities, Forrest General Hospital crossings and expansions, Petal sewerage improvements, Camp Shelby upgrades, regional airport work, and many water associations statewide.</p>
+      </div>
+    </section>
+
+    <section class="band-warm reveal" id="careers" aria-labelledby="careers-title">
+      <div class="wrap">
+        <p class="section-label">Join the team</p>
+        <h2 class="section-title" id="careers-title">Careers at Myers Underground</h2>
+        <div class="careers-box reveal" style="margin-top:1.5rem;max-width:42rem">
+          <h3>Build your career with us</h3>
+          <p>Myers Underground employs dynamic professionals and provides the latest tools and work–life flexibility to succeed. Our people-first culture lets you apply your knowledge to real-world solutions where your work makes a difference.</p>
+          <p><strong style="color:var(--brand-navy)">Interested?</strong> Send a brief introduction and resume to <a href="mailto:myersunderground@att.net">myersunderground@att.net</a> or call <a href="tel:+16015444188">(601) 544-4188</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-light reveal" id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <p class="section-label">Location</p>
+        <h2 class="section-title" id="contact-title">Contact</h2>
+        <p class="section-lead">408 Ryan Road, Hattiesburg — open in Google Maps for directions to the office (brochure / README reference).</p>
+        <div class="contact-grid">
+          <div class="contact-block reveal">
+            <div class="row">
+              <strong>Office</strong>
+              408 Ryan Road<br>
+              Hattiesburg, MS 39401
+            </div>
+            <div class="row">
+              <strong>Phone &amp; fax</strong>
+              <a href="tel:+16015444188">(601) 544-4188</a><br>
+              Fax (601) 544-4189
+            </div>
+            <div class="row">
+              <strong>Email</strong>
+              <a href="mailto:myersunderground@att.net">myersunderground@att.net</a>
+            </div>
+            <a class="btn btn-primary" style="margin-top:0.5rem" href="https://www.google.com/maps/search/?api=1&amp;query=408+Ryan+Road,+Hattiesburg,+MS+39401" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+          </div>
+          <div class="map-embed reveal reveal-delay-1" aria-label="Map of office location">
+            <iframe title="408 Ryan Road, Hattiesburg, Mississippi" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=408+Ryan+Road,+Hattiesburg,+MS+39401&amp;z=14&amp;output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer reveal" id="site-footer">
+    <p>© <span id="year"></span> Myers Underground Utilities, LLC · Water, sewer &amp; gas lines · Commercial / industrial · Subdivisions · Sitework, road bores &amp; concrete</p>
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+      var header = document.getElementById("header");
+      var toggle = document.getElementById("navToggle");
+      var mobile = document.getElementById("mobileNav");
+      var yearEl = document.getElementById("year");
+      if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+      function onScroll() {
+        var y = window.scrollY;
+        if (header) {
+          header.classList.toggle("is-scrolled", y > 16);
+          header.classList.toggle("is-hero", y < window.innerHeight * 0.5);
+        }
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      if (toggle && mobile) {
+        toggle.addEventListener("click", function () {
+          var open = mobile.classList.toggle("is-open");
+          toggle.setAttribute("aria-expanded", open);
+          toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        });
+        mobile.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            mobile.classList.remove("is-open");
+            toggle.setAttribute("aria-expanded", "false");
+            toggle.setAttribute("aria-label", "Open menu");
+          });
+        });
+      }
+
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+      if (reduce.matches) {
+        document.querySelectorAll(".reveal").forEach(function (el) {
+          el.classList.add("is-visible");
+        });
+        return;
+      }
+
+      var reveals = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        reveals.forEach(function (el) { el.classList.add("is-visible"); });
+        return;
+      }
+
+      var io = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { root: null, rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+      );
+
+      reveals.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+</body>
+</html>
