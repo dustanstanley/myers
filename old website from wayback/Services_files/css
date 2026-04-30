@@ -1,0 +1,142 @@
+@font-face {
+  font-family: 'Allura';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Allura Regular'), local('Allura-Regular'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/allura/v7/9oRPNYsQpS4zjuA_iwgT.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Amatic SC';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Amatic SC Regular'), local('AmaticSC-Regular'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/amaticsc/v12/TUZyzwprpvBS1izr_vOECuSa.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Arizonia';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Arizonia Regular'), local('Arizonia-Regular'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/arizonia/v9/neIIzCemt4A5qa7mv5WBFqk.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Averia Sans Libre';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Averia Sans Libre Regular'), local('AveriaSansLibre-Regular'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/averiasanslibre/v7/ga6XaxZG_G5OvCf_rt7FH3B6BHLMEdVOEoc.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Cabin Sketch';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Cabin Sketch Regular'), local('CabinSketch-Regular'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/cabinsketch/v12/QGYpz_kZZAGCONcK2A4bGOj8mNhI.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Francois One';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Francois One Regular'), local('FrancoisOne-Regular'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/francoisone/v13/_Xmr-H4zszafZw3A-KPSZut9wQiU.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Fredericka the Great';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Fredericka the Great'), local('FrederickatheGreat'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/frederickathegreat/v7/9Bt33CxNwt7aOctW2xjbCstzwVKsIBVV--SjxbI.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Jacques Francois Shadow';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Jacques Francois Shadow'), local('JacquesFrancoisShadow-Regular'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/jacquesfrancoisshadow/v7/KR1FBtOz8PKTMk-kqdkLVrvR0ECFrB6Pin-2_p8Sun8.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Josefin Slab';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Josefin Slab Regular'), local('JosefinSlab-Regular'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/josefinslab/v9/lW-5wjwOK3Ps5GSJlNNkMalnqg6q.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Kaushan Script';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Kaushan Script'), local('KaushanScript-Regular'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/kaushanscript/v7/vm8vdRfvXFLG3OLnsO15WYS5DG74wNc.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Love Ya Like A Sister';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Love Ya Like A Sister Regular'), local('LoveYaLikeASister-Regular'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/loveyalikeasister/v9/R70EjzUBlOqPeouhFDfR80-0FhOqJubN-BeL9XxY.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Merriweather';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Merriweather Regular'), local('Merriweather-Regular'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/merriweather/v20/u-440qyriQwlOrhSvowK_l5-fCZJ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Offside';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Offside'), local('Offside-Regular'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/offside/v6/HI_KiYMWKa9QrAykc5boQg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFVZ0e.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oswald Regular'), local('Oswald-Regular'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/oswald/v16/TK3iWkUHHAIjg752GT8D.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Over the Rainbow';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Over the Rainbow'), local('OvertheRainbow'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/overtherainbow/v9/11haGoXG1k_HKhMLUWz7Mc7vvW5ulvSs8A.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Pacifico';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Pacifico Regular'), local('Pacifico-Regular'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/pacifico/v13/FwZY7-Qmy14u9lezJ-6H6Mw.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Romanesco';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Romanesco'), local('Romanesco-Regular'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/romanesco/v7/w8gYH2ozQOY7_r_J7mSX23YP.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Sacramento';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Sacramento'), local('Sacramento-Regular'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/sacramento/v6/buEzpo6gcdjy0EiZMBUG4C0f-A.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Seaweed Script';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Seaweed Script'), local('SeaweedScript-Regular'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/seaweedscript/v6/bx6cNx6Tne2pxOATYE8C_Rsoe3WO8qM.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Special Elite';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Special Elite Regular'), local('SpecialElite-Regular'), url(https://web.archive.org/web/20190316014043im_/http://fonts.gstatic.com/s/specialelite/v9/XLYgIZbkc4JPUL5CVArUVL0ntnAOTQ.ttf) format('truetype');
+}
+
+/*
+     FILE ARCHIVED ON 01:40:43 Mar 16, 2019 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 21:34:50 Apr 24, 2026.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  capture_cache.get: 0.436
+  load_resource: 137.348
+  PetaboxLoader3.resolve: 55.075
+  PetaboxLoader3.datanode: 31.487
+*/
